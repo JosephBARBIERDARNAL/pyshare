@@ -8,7 +8,6 @@ Copyright &copy; 2026 The authors
 
 nav = [
   { "Get started" = "index.md" },
-  { "Markdown in 5min" = "markdown.md" },
   { "Reference" = ["reference/read.md"] },
 ]
 
@@ -109,3 +108,6 @@ paths = ["."]
 docstring_style = "google"
 inherited_members = true
 show_source = false
+
+[project.extra]
+generator = false
