@@ -6,7 +6,9 @@ from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 
-from polars_readstat.polars_readstat_bindings import readstat_metadata_json_rs
+from polars_readstat.polars_readstat_bindings import (
+    readstat_metadata_json_rs,
+)  # ty: ignore
 
 SHARE_FILE_RE = re.compile(
     r"^sharew(?P<wave>\d+)_rel(?P<release>[^_]+)_(?P<module>.+)\.dta$"
