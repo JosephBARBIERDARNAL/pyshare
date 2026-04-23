@@ -1,11 +1,18 @@
 [project]
-name = "py-share"
-version = "0.1.0"
-description = "Add your description here"
+name = "pyshare"
+version = "0.0.1"
+description = "Python interface to work with SHARE data (Survey of Health, Ageing and Retirement in Europe)"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.10"
 dependencies = [
-    "polars>=1.40.1",
-    "polars-readstat>=0.15.0",
-    "zensical>=0.0.34",
+  "polars>=1.40.1",
+  "polars-readstat>=0.15.0",
+]
+
+[dependency-groups]
+dev = [
+  "prek>=0.3.10",
+  "ruff>=0.15.11",
+  "ty>=0.0.32",
+  "zensical>=0.0.34",
 ]
