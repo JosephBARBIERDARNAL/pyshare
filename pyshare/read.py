@@ -55,8 +55,22 @@ def _wave_files(*, wave: int, path: str | Path = "data") -> list[tuple[str, Path
 
 
 def available_share_modules(
-    *, wave: int, path: str | Path = "data", include_derived: bool = False
+    wave: int,
+    *,
+    path: str | Path = "data",
+    include_derived: bool = False,
 ) -> list[str]:
+    """List SHARE modules available for a given wave on disk.
+
+    Args:
+        wave: SHARE wave number to inspect.
+        path: Directory containing downloaded SHARE `.dta` files.
+        include_derived: Whether to include derived modules whose names start
+            with `gv_`.
+
+    Returns:
+        The module names found for the requested wave, in filename order.
+    """
     modules = []
 
     for module, _ in _wave_files(wave=wave, path=path):
@@ -93,8 +107,25 @@ def _find_share_file(*, wave: int, module: str, path: str | Path = "data") -> Pa
 
 
 def read_share_module(
-    *, wave: int, module: str, path: str | Path = "data"
+    module: str,
+    *,
+    wave: int,
+    path: str | Path = "data",
 ) -> pl.DataFrame:
+    """Read a single SHARE module as a Polars DataFrame.
+
+    Args:
+        module: SHARE module name, such as `cv_r` or `dn`.
+        wave: SHARE wave number to read from.
+        path: Directory containing downloaded SHARE `.dta` files.
+
+    Returns:
+        The module data loaded into a Polars DataFrame.
+
+    Raises:
+        FileNotFoundError: If no file matches the requested wave and module.
+        ValueError: If more than one file matches the requested wave and module.
+    """
     return read_readstat(_find_share_file(wave=wave, module=module, path=path))
 
 
@@ -145,6 +176,32 @@ def read_share_wave(
     include_derived: bool = False,
     how: JoinHow = "left",
 ) -> pl.DataFrame:
+    """Read and merge SHARE modules for a single wave.
+
+    When `modules` is not provided, the function reads every available module
+    for the wave and skips non-mergeable modules automatically. When `modules`
+    is provided explicitly, each selected module must contain a unique
+    `mergeid`.
+
+    Args:
+        wave: SHARE wave number to read from.
+        path: Directory containing downloaded SHARE `.dta` files.
+        modules: Specific modules to merge. If omitted, all available modules
+            are considered.
+        base_module: Module used as the initial left-hand table when present in
+            `modules`.
+        include_derived: Whether to include derived modules whose names start
+            with `gv_` when `modules` is omitted.
+        how: Join strategy passed to `polars.DataFrame.join`.
+
+    Returns:
+        A merged Polars DataFrame keyed on `mergeid`.
+
+    Raises:
+        ValueError: If no modules are found, if no mergeable modules remain, or
+            if an explicitly requested module cannot be merged on `mergeid`.
+        FileNotFoundError: If an explicitly requested module file is missing.
+    """
     explicit_modules = modules is not None
     if modules is None:
         selected_input = available_share_modules(
