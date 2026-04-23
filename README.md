@@ -23,11 +23,3 @@ df = ps.read_share_wave(9)
 df.shape
 #> (97365, 4462)
 ```
-
-- Look for another directory:
-
-```py
-import pyshare as ps
-
-df = ps.read_share_wave(9, path="share-data")
-```
