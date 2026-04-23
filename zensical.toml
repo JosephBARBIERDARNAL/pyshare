@@ -8,6 +8,19 @@ Copyright &copy; 2026 The authors
 
 nav = [
   { "Get started" = "index.md" },
+  { "Guides" = [
+    "guides/modules.md",
+    "guides/variables/index.md",
+    "guides/variables/wave-1.md",
+    "guides/variables/wave-2.md",
+    "guides/variables/wave-3.md",
+    "guides/variables/wave-4.md",
+    "guides/variables/wave-5.md",
+    "guides/variables/wave-6.md",
+    "guides/variables/wave-7.md",
+    "guides/variables/wave-8.md",
+    "guides/variables/wave-9.md",
+  ] },
   { "Reference" = ["reference/read.md"] },
 ]
 

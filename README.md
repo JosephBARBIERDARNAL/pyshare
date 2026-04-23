@@ -19,7 +19,10 @@ In order to read SHARE data, it requires you to have access to them, to download
 ```py
 import pyshare as ps
 
-df = ps.read_share_wave(9)
+df = ps.read_share_wave(wave=9)
 df.shape
 #> (97365, 4462)
 ```
+
+If you are unsure which dataset to load, start with the documentation module guide at `docs/guides/modules.md`.
+If you need exact variable labels for a specific wave and dataset, use `docs/guides/variables/index.md`.
