@@ -1,6 +1,7 @@
 from pyshare.read import read_share_wave
 from pyshare.map_utils import (
     MAP_ID_TO_COUNTRY,
+    MAP_YES_NO,
     MAP_CANCER,
     MAP_GENDER,
     MAP_COMPUTER_SKILLS,
@@ -15,6 +16,7 @@ __all__ = [
     "read_share_wave",
     "MAP_ID_TO_COUNTRY",
     "MAP_CANCER",
+    "MAP_YES_NO",
     "MAP_COMPUTER_SKILLS",
     "MAP_GENDER",
     "MAP_HEALTH_LITERACY_HELP",
