@@ -54,7 +54,7 @@ def _wave_files(*, wave: int, path: str | Path = "data") -> list[tuple[str, Path
     return files
 
 
-def available_share_modules(
+def _available_share_modules(
     wave: int,
     *,
     path: str | Path = "data",
@@ -90,7 +90,7 @@ def _find_share_file(*, wave: int, module: str, path: str | Path = "data") -> Pa
 
     if not matches:
         available = ", ".join(
-            available_share_modules(wave=wave, path=path, include_derived=True)
+            _available_share_modules(wave=wave, path=path, include_derived=True)
         )
         raise FileNotFoundError(
             f"Could not find SHARE wave {wave} module {module!r} in {Path(path)}. "
@@ -106,7 +106,7 @@ def _find_share_file(*, wave: int, module: str, path: str | Path = "data") -> Pa
     return matches[0]
 
 
-def read_share_module(
+def _read_share_module(
     module: str,
     *,
     wave: int,
@@ -168,8 +168,8 @@ def _unique_modules(modules: Iterable[str]) -> list[str]:
 
 
 def read_share_wave(
-    *,
     wave: int,
+    *,
     path: str | Path = "data",
     modules: Iterable[str] | None = None,
     base_module: str = "cv_r",
@@ -204,7 +204,7 @@ def read_share_wave(
     """
     explicit_modules = modules is not None
     if modules is None:
-        selected_input = available_share_modules(
+        selected_input = _available_share_modules(
             wave=wave,
             path=path,
             include_derived=include_derived,
@@ -228,7 +228,7 @@ def read_share_wave(
     merged: pl.DataFrame | None = None
 
     for module in ordered_modules:
-        frame = read_share_module(wave=wave, module=module, path=path)
+        frame = _read_share_module(wave=wave, module=module, path=path)
 
         try:
             _require_mergeid(module, frame)

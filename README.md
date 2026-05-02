@@ -19,9 +19,28 @@ In order to read SHARE data, it requires you to have access to them, to download
 ```py
 import pyshare as ps
 
-df = ps.read_share_wave(9) # read all data from wave 9
-df.shape       # polars dataframe
+# All data from wave 9
+df = ps.read_share_wave(9)
+df.shape
 #> (97365, 4462)
+```
+
+> [!NOTE]
+> It always return a polars dataframe.
+
+- For much faster read time specify which modules you want:
+
+```py
+import pyshare as ps
+
+df = ps.read_share_wave(9 , modules=["dn", "ph", "hc"])
+df.shape
+#> (69447, 401)
+```
+
+- `pyshare` also bundles a few mapping dictionnary to make the data more human-readable:
+
+```py
 ```
 
 Learn more in the [documentation website](https://josephbarbierdarnal.github.io/pyshare/).

@@ -1,9 +1,23 @@
-from pyshare.read import available_share_modules, read_share_module, read_share_wave
-from pyshare.country import MAP_ID_TO_COUNTRY
+from pyshare.read import read_share_wave
+from pyshare.map_utils import (
+    MAP_ID_TO_COUNTRY,
+    MAP_CANCER,
+    MAP_GENDER,
+    MAP_HEALTH_LITERACY_HELP,
+    MAP_ENDS_MEET,
+    MAP_ISCED_1997,
+    MAP_SHARE_MISSING_CODES,
+    MAP_SHARE_FINANCIAL_MISSING_CODES,
+)
 
 __all__ = [
-    "available_share_modules",
-    "read_share_module",
     "read_share_wave",
     "MAP_ID_TO_COUNTRY",
+    "MAP_CANCER",
+    "MAP_GENDER",
+    "MAP_HEALTH_LITERACY_HELP",
+    "MAP_ENDS_MEET",
+    "MAP_ISCED_1997",
+    "MAP_SHARE_MISSING_CODES",
+    "MAP_SHARE_FINANCIAL_MISSING_CODES",
 ]
