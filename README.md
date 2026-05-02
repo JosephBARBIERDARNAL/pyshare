@@ -41,6 +41,27 @@ df.shape
 - `pyshare` also bundles a few mapping dictionnary to make the data more human-readable:
 
 ```py
+from pyshare import MAP_ID_TO_COUNTRY
+import pyshare as ps
+
+(
+   ps.read_share_wave(9, modules=["dn"])
+   # Get country in "human" format
+   .with_columns(pl.col("country").replace_strict(ps.MAP_ID_TO_COUNTRY))
+)
 ```
+
+The exhaustive list is:
+
+- MAP_ID_TO_COUNTRY
+- MAP_YES_NO
+- MAP_CANCER
+- MAP_GENDER
+- MAP_COMPUTER_SKILLS
+- MAP_HEALTH_LITERACY_HELP
+- MAP_ENDS_MEET
+- MAP_ISCED_1997
+- MAP_SHARE_MISSING_CODES
+- MAP_SHARE_FINANCIAL_MISSING_CODES
 
 Learn more in the [documentation website](https://josephbarbierdarnal.github.io/pyshare/).
