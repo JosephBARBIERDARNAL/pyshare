@@ -7,7 +7,7 @@ Python interface to work with SHARE data (Survey of Health, Ageing and Retiremen
 ## Installation
 
 ```
-pip install git+https://github.com/JosephBARBIERDARNAL/pyshare.git
+pip install git+https://github.com/blue-poppy/pyshare.git
 ```
 
 <br>
