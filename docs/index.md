@@ -69,8 +69,4 @@ The exhaustive list is:
 - MAP_SHARE_MISSING_CODES
 - MAP_SHARE_FINANCIAL_MISSING_CODES
 
-If you are unsure which dataset to load, start with the [module guide](./guides/modules.md). It explains how SHARE filenames map to `pyshare` module names and includes a module dictionary by topic and wave.
-
-If you already know the wave and need the exact meaning of a variable name, use the [variable dictionary](./guides/variables/index.md). It is generated from the Stata metadata embedded in the local SHARE files.
-
 Learn more in the [reference page](./reference/read.md).
